@@ -1,11 +1,25 @@
+import { useSelector, useDispatch } from 'react-redux';
+import { useEffect } from 'react';
+import {
+  selectContacts,
+  selectError,
+  selectFilter,
+  selectIsLoading,
+} from 'redux/selectors';
+import { fetchContacts } from 'redux/contactsOperations';
 import { ContactItem } from '../ContactItem/ContactItem';
-import { useSelector } from 'react-redux';
-import { getContacts, getFilter } from 'redux/selectors';
 import { ContactItems } from './ContactList.styled';
 
 export const ContactList = () => {
-  const contacts = useSelector(getContacts);
-  const filter = useSelector(getFilter);
+  const contacts = useSelector(selectContacts);
+  const isLoading = useSelector(selectIsLoading);
+  const error = useSelector(selectError);
+  const filter = useSelector(selectFilter);
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(fetchContacts());
+  }, [dispatch]);
 
   const getFilterContacts = () => {
     if (!filter) {
@@ -20,16 +34,22 @@ export const ContactList = () => {
   const filteredContacts = getFilterContacts();
 
   return (
-    <ul>
-      {filteredContacts.map(contact => (
-        <ContactItems key={contact.id}>
-          <ContactItem
-            name={contact.name}
-            number={contact.number}
-            id={contact.id}
-          />
-        </ContactItems>
-      ))}
-    </ul>
+    <div>
+      {isLoading && <p>Loading...</p>}
+      {error && <p>{error}</p>}
+      {contacts.length > 0 && (
+        <ul>
+          {filteredContacts.map(contact => (
+            <ContactItems key={contact.id}>
+              <ContactItem
+                name={contact.name}
+                number={contact.phone}
+                id={contact.id}
+              />
+            </ContactItems>
+          ))}
+        </ul>
+      )}
+    </div>
   );
 };

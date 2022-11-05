@@ -1,7 +1,9 @@
 import styled from 'styled-components';
 
 export const ContactItems = styled.li`
-  padding: ${p => p.theme.space[2]}px;
+  padding-top: ${p => p.theme.space[2]}px;
+  padding-bottom: ${p => p.theme.space[2]}px;
+  padding-right: ${p => p.theme.space[4]}px;
   padding-left: ${p => p.theme.space[4]}px;
   margin-bottom: ${p => p.theme.space[2]}px;
   background-color: ${p => p.theme.colors.white};
@@ -13,7 +15,7 @@ export const ContactItems = styled.li`
 `;
 
 export const ListButton = styled.button`
-  margin-left: ${p => p.theme.space[4]}px;
+  margin-left: ${p => p.theme.space[7]}px;
   font-size: ${p => p.theme.fontSizes.xs};
   border: ${p => p.theme.borders.normal};
   border-radius: ${p => p.theme.radii.sm};

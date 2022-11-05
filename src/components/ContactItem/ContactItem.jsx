@@ -1,19 +1,22 @@
 import PropTypes from 'prop-types';
 import { useDispatch } from 'react-redux';
-import { removeContact } from 'redux/contactsSlice';
+import { deleteContact } from 'redux/contactsOperations';
 import { ListButton } from '../ContactList/ContactList.styled';
+import { Box } from '../Box';
 
 export const ContactItem = ({ name, number, id }) => {
   const dispatch = useDispatch();
 
   return (
-    <div>
-      <span>{name}: </span>
-      <span>{number}</span>
-      <ListButton type="button" onClick={() => dispatch(removeContact(id))}>
+    <Box display="flex" justifyContent="space-between">
+      <Box display="flex" justifyContent="space-between" width="100%">
+        <span>{name}: </span>
+        <span>{number}</span>
+      </Box>
+      <ListButton type="button" onClick={() => dispatch(deleteContact(id))}>
         Delete
       </ListButton>
-    </div>
+    </Box>
   );
 };
 
