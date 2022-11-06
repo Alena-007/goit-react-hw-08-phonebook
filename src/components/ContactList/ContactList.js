@@ -5,8 +5,8 @@ import {
   selectError,
   selectFilter,
   selectIsLoading,
-} from 'redux/selectors';
-import { fetchContacts } from 'redux/contactsOperations';
+} from 'redux/contacts/contactsSelectors';
+import { fetchContacts } from 'redux/contacts/contactsOperations';
 import { ContactItem } from '../ContactItem/ContactItem';
 import { ContactItems } from './ContactList.styled';
 
@@ -41,11 +41,7 @@ export const ContactList = () => {
         <ul>
           {filteredContacts.map(contact => (
             <ContactItems key={contact.id}>
-              <ContactItem
-                name={contact.name}
-                number={contact.phone}
-                id={contact.id}
-              />
+              <ContactItem name={contact.name} number={contact.phone} id={contact.id} />
             </ContactItems>
           ))}
         </ul>
