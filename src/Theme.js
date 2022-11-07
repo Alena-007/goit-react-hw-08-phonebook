@@ -11,7 +11,7 @@ export const theme = {
     secondary: '#4B0082',
     accent: '#DAA520',
   },
-  space: [0, 2, 4, 8, 16, 32, 64, 128, 256, 512],
+  space: [0, 4, 8, 16, 32, 64, 128, 256, 512],
   fonts: {
     body: 'system-ui, sans-serif',
     heading: 'system-ui, sans-serif',
@@ -35,6 +35,7 @@ export const theme = {
   borders: {
     none: 'none',
     normal: '1px solid rgba(0, 0, 0, 0.3)',
+    white: '1px solid white',
   },
   radii: {
     none: '0',
