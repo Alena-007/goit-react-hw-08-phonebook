@@ -36,6 +36,7 @@ export const theme = {
     none: 'none',
     normal: '1px solid rgba(0, 0, 0, 0.3)',
     white: '1px solid white',
+    primary: '1px solid #8B008B',
   },
   radii: {
     none: '0',
