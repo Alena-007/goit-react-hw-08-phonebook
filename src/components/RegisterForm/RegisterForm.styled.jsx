@@ -42,7 +42,7 @@ export const ButtonRegister = styled.button`
   align-items: center;
   padding: ${p => p.theme.space[3]}px;
   margin-top: ${p => p.theme.space[3]}px;
-  background-color: ${p => p.theme.colors.white};
+  background-color: ${p => p.theme.colors.background};
   font-weight: ${p => p.theme.fontWeights.bold};
   color: ${p => p.theme.colors.secondary};
   font-size: ${p => p.theme.fontSizes.m};

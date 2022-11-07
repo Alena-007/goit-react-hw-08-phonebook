@@ -10,7 +10,9 @@ export const ContactItem = ({ name, number, id }) => {
   return (
     <Box display="flex" justifyContent="space-between">
       <Box display="flex" justifyContent="space-between" width="100%">
-        <span>{name}: </span>
+        <Box as="span" width="300px">
+          {name}
+        </Box>
         <span>{number}</span>
       </Box>
       <ListButton type="button" onClick={() => dispatch(deleteContact(id))}>

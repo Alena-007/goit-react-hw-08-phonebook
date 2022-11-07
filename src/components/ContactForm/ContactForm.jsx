@@ -2,7 +2,12 @@ import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { selectContacts } from 'redux/contacts/contactsSelectors';
 import { addContact } from 'redux/contacts/contactsOperations';
-import { Form, FormLabel, FormInput, FormButton } from './ContactForm.styled';
+import {
+  FormContacts,
+  FormLabelContacts,
+  FormInputContacts,
+  FormButtonContacts,
+} from './ContactForm.styled';
 
 export const ContactForm = () => {
   const [name, setName] = useState('');
@@ -41,10 +46,11 @@ export const ContactForm = () => {
   };
 
   return (
-    <Form onSubmit={handleSubmit}>
-      <FormLabel>
+    <FormContacts onSubmit={handleSubmit}>
+      <p>Enter your contact</p>
+      <FormLabelContacts>
         Name
-        <FormInput
+        <FormInputContacts
           type="text"
           name="name"
           pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
@@ -53,10 +59,10 @@ export const ContactForm = () => {
           value={name}
           onChange={handleChange}
         />
-      </FormLabel>
-      <FormLabel>
+      </FormLabelContacts>
+      <FormLabelContacts>
         Number
-        <FormInput
+        <FormInputContacts
           type="tel"
           name="number"
           pattern="\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}"
@@ -65,8 +71,8 @@ export const ContactForm = () => {
           value={number}
           onChange={handleChange}
         />
-      </FormLabel>
-      <FormButton type="submit">Add contact</FormButton>
-    </Form>
+      </FormLabelContacts>
+      <FormButtonContacts type="submit">Add contact</FormButtonContacts>
+    </FormContacts>
   );
 };

@@ -4,6 +4,8 @@ import { ContactList } from 'components/ContactList/ContactList';
 import { ContactForm } from 'components/ContactForm/ContactForm';
 import { fetchContacts } from 'redux/contacts/contactsOperations';
 import { selectIsLoading } from 'redux/contacts/contactsSelectors';
+import { Filter } from 'components/Filter/Filter';
+import { Box } from 'components/Box';
 
 export default function Tasks() {
   const dispatch = useDispatch();
@@ -14,10 +16,17 @@ export default function Tasks() {
   }, [dispatch]);
 
   return (
-    <>
-      <ContactForm />
-      <div>{isLoading && 'Request in progress...'}</div>
-      <ContactList />
-    </>
+    <Box display="flex" justifyContent="space-evenly" p={4} gridGap={4}>
+      <div>
+        <ContactForm />
+        <Filter />
+      </div>
+      <div>
+        <Box color="white" fontSize={32}>
+          {isLoading && 'Request in progress...'}
+        </Box>
+        <ContactList />
+      </div>
+    </Box>
   );
 }
