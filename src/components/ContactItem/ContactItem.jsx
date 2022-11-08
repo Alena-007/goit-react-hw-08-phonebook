@@ -1,11 +1,26 @@
 import PropTypes from 'prop-types';
-import { useDispatch } from 'react-redux';
+import { useState, useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { selectIsLoading } from 'redux/contacts/contactsSelectors';
 import { deleteContact } from 'redux/contacts/contactsOperations';
 import { ListButton } from '../ContactList/ContactList.styled';
 import { Box } from '../Box';
 
 export const ContactItem = ({ name, number, id }) => {
   const dispatch = useDispatch();
+  const isLoading = useSelector(selectIsLoading);
+  const [deletingItem, setDeletingItem] = useState('');
+
+  const handleDelete = () => {
+    dispatch(deleteContact(id));
+    setDeletingItem(id);
+  };
+
+  useEffect(() => {
+    if (!isLoading) {
+      setDeletingItem('');
+    }
+  }, [isLoading]);
 
   return (
     <Box display="flex" justifyContent="space-between">
@@ -15,8 +30,14 @@ export const ContactItem = ({ name, number, id }) => {
         </Box>
         <span>{number}</span>
       </Box>
-      <ListButton type="button" onClick={() => dispatch(deleteContact(id))}>
-        Delete
+      <ListButton type="button" onClick={handleDelete}>
+        {deletingItem === id ? (
+          <Box as="span" color="#4B0082" fontWeight="bold">
+            Deleting...
+          </Box>
+        ) : (
+          <span>Delete</span>
+        )}
       </ListButton>
     </Box>
   );

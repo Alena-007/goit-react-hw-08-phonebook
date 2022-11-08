@@ -10,7 +10,7 @@ export const FormLogin = styled.form`
   background-color: ${p => p.theme.colors.white};
   border-radius: ${p => p.theme.radii.md};
   box-shadow: inset 0 0 10px 5px rgba(0, 0, 0, 0.3);
-  opacity: 0.8;
+  opacity: 0.9;
   margin-left: auto;
   margin-right: auto;
   width: 600px;

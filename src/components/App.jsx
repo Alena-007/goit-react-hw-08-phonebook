@@ -6,6 +6,7 @@ import { PrivateRoute } from './PrivateRoute';
 import { RestrictedRoute } from './RestrictedRoute';
 import { refreshUser } from 'redux/auth/authOperations';
 import { useAuth } from 'hooks';
+import { Box } from './Box';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
@@ -23,7 +24,9 @@ export const App = () => {
   }, [dispatch]);
 
   return isRefreshing ? (
-    <b>Refreshing user...</b>
+    <Box p={32} color="white" fontSize={32} fontWeight="bold">
+      Refreshing user...
+    </Box>
   ) : (
     <>
       <Routes>
@@ -43,7 +46,7 @@ export const App = () => {
           />
         </Route>
       </Routes>
-      <ToastContainer autoClose={3000} position="top-center" theme="colored" />
+      <ToastContainer autoClose={2000} position="top-center" theme="colored" />
     </>
   );
 };

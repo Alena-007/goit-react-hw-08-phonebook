@@ -1,14 +1,16 @@
 import { useSelector, useDispatch } from 'react-redux';
 import { useEffect } from 'react';
-import { selectContacts, selectError, selectFilter } from 'redux/contacts/contactsSelectors';
+import { selectContacts, selectFilter, selectIsLoading } from 'redux/contacts/contactsSelectors';
 import { fetchContacts } from 'redux/contacts/contactsOperations';
 import { ContactItem } from '../ContactItem/ContactItem';
 import { ContactItems } from './ContactList.styled';
+import { Loader } from '../Loader';
+import { Box } from 'components/Box';
 
 export const ContactList = () => {
   const contacts = useSelector(selectContacts);
-  const error = useSelector(selectError);
   const filter = useSelector(selectFilter);
+  const isLoading = useSelector(selectIsLoading);
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -29,7 +31,7 @@ export const ContactList = () => {
 
   return (
     <div>
-      {error && <p>{error}</p>}
+      <Box mb={3}>{isLoading && <Loader />}</Box>
       {contacts.length > 0 && (
         <ul>
           {filteredContacts.map(contact => (

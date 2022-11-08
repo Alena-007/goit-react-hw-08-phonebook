@@ -8,6 +8,7 @@ import {
   FormInputContacts,
   FormButtonContacts,
 } from './ContactForm.styled';
+import { toast } from 'react-toastify';
 
 export const ContactForm = () => {
   const [name, setName] = useState('');
@@ -37,10 +38,11 @@ export const ContactForm = () => {
       contact => contact.name.toLocaleLowerCase() === name.toLocaleLowerCase()
     );
     if (isExistContact) {
-      alert(`${name} is already in contacts.`);
+      toast.error(`${name} is already in contacts`);
       return;
     }
     dispatch(addContact({ name, number }));
+    toast.success('Successfully added contact!');
     setName('');
     setNumber('');
   };

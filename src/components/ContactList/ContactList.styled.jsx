@@ -18,7 +18,7 @@ export const ContactItems = styled.li`
 
 export const ListButton = styled.button`
   margin-left: ${p => p.theme.space[6]}px;
-  font-size: ${p => p.theme.fontSizes.s};
+  font-size: ${p => p.theme.fontSizes.m};
   border: ${p => p.theme.borders.normal};
   border-radius: ${p => p.theme.radii.sm};
   cursor: pointer;
