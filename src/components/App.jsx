@@ -45,6 +45,14 @@ export const App = () => {
             element={<PrivateRoute redirectTo="/login" component={<ContactsPage />} />}
           />
         </Route>
+        <Route
+          path="*"
+          element={
+            <Box p={32} color="white" fontSize={70} fontWeight="bold" textAlign="center">
+              404 <br></br>Page not found
+            </Box>
+          }
+        />
       </Routes>
       <ToastContainer autoClose={2000} position="top-center" theme="colored" />
     </>

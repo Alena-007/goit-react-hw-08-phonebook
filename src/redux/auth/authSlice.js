@@ -29,7 +29,7 @@ const authSlice = createSlice({
     [register.rejected](state, action) {
       state.isLoading = false;
       state.isError = action.payload;
-      toast.warn('This user is already registered!');
+      toast.warn('Wrong password or email!');
     },
     [logIn.pending](state) {
       state.isLoading = true;
@@ -61,7 +61,7 @@ const authSlice = createSlice({
     [logOut.rejected](state, action) {
       state.isLoading = false;
       state.isError = action.payload;
-      toast.error('Something is wrong, try again later!');
+      toast.error('Something went wrong, please try again!');
     },
     [refreshUser.pending](state) {
       state.isRefreshing = true;
